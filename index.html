@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邱家蓉 · 个人作品集</title>
+<meta name="description" content="视觉设计 / 纪实摄影 / 新媒体宣传">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#fbfbfd;--card:#fff;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--blue:#0071e3;--blue-h:#0077ed;--border:rgba(0,0,0,.08);--shadow:0 4px 24px rgba(0,0,0,.06);--shadow-h:0 8px 40px rgba(0,0,0,.1);--radius:18px}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--blue);text-decoration:none;transition:color .2s}
+a:hover{color:var(--blue-h)}
+img{max-width:100%;display:block}
+.nav{position:fixed;top:0;left:0;right:0;height:52px;z-index:1000;background:rgba(251,251,253,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
+.nav-inner{max-width:1024px;width:100%;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:15px;font-weight:600}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:12px;color:var(--text2)}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:18px;height:1.5px;background:var(--text);margin:4px 0;transition:.3s;border-radius:2px}
+section{padding:100px 22px;max-width:1024px;margin:0 auto}
+.section-label{font-size:13px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;text-align:center}
+.section-title{font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1.1;text-align:center;margin-bottom:16px}
+.section-sub{font-size:clamp(15px,2vw,19px);color:var(--text2);text-align:center;max-width:560px;margin:0 auto 56px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 22px 40px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,113,227,.06),transparent 60%)}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:980px;background:rgba(0,113,227,.08);font-size:13px;color:var(--blue);font-weight:500;margin-bottom:24px}
+.hero-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(48px,9vw,96px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(135deg,#1d1d1f 30%,#6e6e73);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px}
+.hero-role{font-size:clamp(18px,3vw,28px);font-weight:600;margin-bottom:12px}
+.hero-tagline{font-size:clamp(15px,2vw,19px);color:var(--text2);max-width:480px;margin:0 auto 40px}
+.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:48px}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:36px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,#0071e3,#42a5f5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .label{font-size:13px;color:var(--text3);margin-top:2px}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text3);font-size:11px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-text p{font-size:17px;color:var(--text2);margin-bottom:16px;line-height:1.7}
+.about-text strong{color:var(--text);font-weight:600}
+.about-cards{display:flex;flex-direction:column;gap:16px}
+.about-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:transform .3s,box-shadow .3s}
+.about-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.about-card h4{font-size:15px;font-weight:600;margin-bottom:6px}
+.about-card p{font-size:14px;color:var(--text2);line-height:1.6}
+.edu-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:24px}
+.edu-box h4{font-size:16px;font-weight:600;margin-bottom:4px}
+.edu-box .meta{font-size:13px;color:var(--text3);margin-bottom:8px}
+.edu-box p{font-size:14px;color:var(--text2)}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--blue),rgba(0,113,227,.1))}
+.tl-item{position:relative;margin-bottom:36px}
+.tl-item::before{content:"";position:absolute;left:-28px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2.5px solid var(--blue);z-index:1}
+.tl-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+.tl-head h3{font-size:18px;font-weight:600}
+.tl-head .date{font-size:13px;color:var(--text3)}
+.tl-org{font-size:14px;color:var(--blue);font-weight:500;margin-bottom:8px}
+.tl-list{list-style:none}
+.tl-list li{font-size:14px;color:var(--text2);padding-left:16px;position:relative;margin-bottom:5px;line-height:1.6}
+.tl-list li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--text3)}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.report-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;transition:all .3s;display:block;position:relative;overflow:hidden}
+.report-card::after{content:"↗";position:absolute;top:18px;right:20px;font-size:16px;color:var(--text3);transition:all .3s}
+.report-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);border-color:rgba(0,113,227,.3)}
+.report-card:hover::after{color:var(--blue);transform:translate(2px,-2px)}
+.report-card .tag{font-size:11px;color:var(--blue);font-weight:600;margin-bottom:8px}
+.report-card h3{font-size:15px;font-weight:600;line-height:1.4;color:var(--text);padding-right:24px}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.vol-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:all .3s}
+.vol-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.vol-card .v-org{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:4px}
+.vol-card h3{font-size:16px;font-weight:600;margin-bottom:6px}
+.vol-card p{font-size:13px;color:var(--text2);line-height:1.6}
+.vol-badge{display:inline-block;font-size:11px;padding:2px 10px;border-radius:980px;background:rgba(0,113,227,.08);color:var(--blue);font-weight:500;margin-top:8px}
+.honor-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.honor-cat h3{font-size:17px;font-weight:600;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.honor-list{list-style:none}
+.honor-list li{font-size:14px;color:var(--text2);padding:8px 0 8px 24px;position:relative;line-height:1.5;border-bottom:1px solid rgba(0,0,0,.04)}
+.honor-list li:last-child{border-bottom:none}
+.honor-list li::before{content:"🏆";position:absolute;left:0;top:8px;font-size:12px}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s}
+.skill-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.skill-icon{font-size:28px;margin-bottom:12px}
+.skill-card h3{font-size:16px;font-weight:600;margin-bottom:10px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tags span{font-size:12px;padding:4px 12px;border-radius:980px;background:#f5f5f7;color:var(--text2)}
+.portfolio-filters{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.filter-btn{padding:7px 18px;border-radius:980px;border:1px solid var(--border);background:var(--card);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;font-family:inherit;font-weight:500}
+.filter-btn:hover{border-color:var(--blue);color:var(--blue)}
+.filter-btn.active{background:var(--text);color:#fff;border-color:var(--text)}
+.portfolio-grid{columns:3;column-gap:16px}
+.portfolio-item{break-inside:avoid;margin-bottom:16px;border-radius:14px;overflow:hidden;position:relative;cursor:pointer;transition:transform .3s}
+.portfolio-item:hover{transform:scale(.98)}
+.portfolio-item img{width:100%;border-radius:14px;transition:transform .5s}
+.portfolio-item:hover img{transform:scale(1.04)}
+.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 50%);border-radius:14px;opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.portfolio-item:hover .portfolio-overlay{opacity:1}
+.portfolio-overlay h4{color:#fff;font-size:16px;font-weight:600}
+.portfolio-overlay p{color:rgba(255,255,255,.8);font-size:12px;margin-top:2px}
+.portfolio-overlay .cat{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.9);color:var(--text);font-size:11px;padding:3px 10px;border-radius:980px;font-weight:600}
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:40px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;border-radius:8px;object-fit:contain}
+.lightbox-caption{color:#fff;text-align:center;margin-top:16px}
+.lightbox-caption h4{font-size:18px;font-weight:600}
+.lightbox-caption p{font-size:14px;color:rgba(255,255,255,.7);margin-top:4px}
+.lightbox-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;opacity:.7;transition:opacity .2s;line-height:1}
+.lightbox-close:hover{opacity:1}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:none;color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lightbox-nav:hover{background:rgba(255,255,255,.2)}
+.lightbox-prev{left:24px}.lightbox-next{right:24px}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+.contact-info-cards{display:flex;flex-direction:column;gap:14px}
+.contact-card{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;transition:all .3s}
+.contact-card:hover{box-shadow:var(--shadow)}
+.contact-card .icon{width:42px;height:42px;border-radius:12px;background:rgba(0,113,227,.08);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.contact-card .label{font-size:12px;color:var(--text3)}
+.contact-card .value{font-size:15px;font-weight:500}
+.contact-social{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.contact-social span{font-size:13px;padding:6px 16px;border-radius:980px;background:#f5f5f7;color:var(--text2)}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:12px;font-size:15px;font-family:inherit;background:#f5f5f7;transition:all .2s;color:var(--text)}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(0,113,227,.1)}
+.form-group textarea{resize:vertical;min-height:110px}
+.btn-submit{width:100%;padding:14px;border:none;border-radius:12px;background:var(--text);color:#fff;font-size:16px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-submit:hover{background:#000}
+footer{text-align:center;padding:40px 22px;border-top:1px solid var(--border);color:var(--text3);font-size:13px}
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:#fff;padding:14px 28px;border-radius:14px;font-size:14px;font-weight:500;z-index:3000;opacity:0;transition:all .4s;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+.nav-links{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(251,251,253,.95);backdrop-filter:blur(20px);flex-direction:column;padding:16px 22px;gap:0;border-bottom:1px solid var(--border)}
+.nav-links.open{display:flex}
+.nav-links li{padding:12px 0;border-bottom:1px solid var(--border)}
+.nav-links li:last-child{border-bottom:none}
+.nav-toggle{display:block}
+.about-grid,.contact-wrap{grid-template-columns:1fr;gap:32px}
+.form-row{grid-template-columns:1fr}
+.portfolio-grid{columns:2}
+.hero-stats{gap:24px}
+.hero-stat .num{font-size:28px}
+section{padding:70px 18px}
+.lightbox-prev{left:8px}.lightbox-next{right:8px}
+}
+@media(max-width:480px){.portfolio-grid{columns:1}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav"><div class="nav-inner">
+<div class="nav-logo">邱家蓉</div>
+<ul class="nav-links" id="navLinks">
+<li><a href="#about">关于</a></li><li><a href="#experience">经历</a></li><li><a href="#reports">报道</a></li><li><a href="#honors">荣誉</a></li><li><a href="#portfolio">作品</a></li><li><a href="#contact">联系</a></li>
+</ul>
+<button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</div></nav>
+
+<section class="hero" id="hero"><div class="hero-bg"></div><div class="hero-content">
+<div class="hero-badge">Available for opportunities</div>
+<h1>邱家蓉</h1>
+<div class="hero-role">视觉设计 · 纪实摄影 · 新媒体宣传</div>
+<p class="hero-tagline">以设计思维做视觉内容，以镜头语言讲品牌故事。<br>横跨「策划 — 拍摄 — 后期 — 运营」全链路的复合型视觉传播者。</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">4</div><div class="label">宣传一线实践</div></div>
+<div class="hero-stat"><div class="num">9</div><div class="label">官方媒体报道</div></div>
+<div class="hero-stat"><div class="num">500+</div><div class="label">摄影作品输出</div></div>
+<div class="hero-stat"><div class="num">1200+</div><div class="label">项目服务人次</div></div>
+</div></div>
+<div class="scroll-hint"><span>向下滚动</span>
+<svg width="16" height="24" viewBox="0 0 16 24" fill="none"><rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg></div>
+</section>
+
+<section id="about">
+<div class="section-label reveal">About Me</div>
+<h2 class="section-title reveal">关于我</h2>
+<div class="about-grid">
+<div class="about-text reveal">
+<p>科班<strong>视觉传达设计</strong>出身，同时在融媒体中心、共青团、学联三个宣传阵地一线实战，积累了从内容策划、摄影摄像、后期制作到新媒体运营的全链路经验。</p>
+<p>既能端起相机出片，也能坐下来做设计排版，还能下场统筹项目。<strong>设计审美 + 摄影眼 + 宣传感</strong>三位一体，是宣传岗位上难得的复合型选手。</p>
+<div class="edu-box"><h4>上海立达学院</h4><div class="meta">视觉传达设计 · 本科 · 2023.09 - 至今</div><p>主修课程：平面设计基础、摄影与摄像、视觉传达理论、品牌形象设计</p></div>
+</div>
+<div class="about-cards">
+<div class="about-card reveal"><h4>🎨 视觉设计</h4><p>平面设计、品牌视觉、海报排版，用设计专业能力优化一切视觉呈现。</p></div>
+<div class="about-card reveal"><h4>📷 纪实摄影</h4><p>活动纪实、新闻摄影、人像采访，区级重大活动独立跟拍，素材可用率95%。</p></div>
+<div class="about-card reveal"><h4>📱 新媒体宣传</h4><p>公众号/视频号内容策划与运营，图文、短视频全流程产出，500+作品输出。</p></div>
+</div></div>
+</section>
+
+<section id="experience" style="background:#f5f5f7;max-width:100%;padding-left:0;padding-right:0">
+<div style="max-width:1024px;margin:0 auto;padding:0 22px">
+<div class="section-label reveal">Experience</div>
+<h2 class="section-title reveal">实践经历</h2>
+<div class="timeline">
+<div class="tl-item reveal"><div class="tl-head"><h3>摄影 · 新媒体</h3><span class="date">2026.01 - 至今</span></div><div class="tl-org">崇明共青团</div>
+<ul class="tl-list"><li>负责新媒体平台图文与短视频内容策划制作，聚焦青年议题与团务宣传</li><li>承担会议、志愿活动、主题宣传等场景现场摄影，累计输出高质量照片 500+ 张</li><li>搭建优化摄影素材库标签体系，检索效率提升 30%</li></ul></div>
+<div class="tl-item reveal"><div class="tl-head"><h3>摄制岗 · 新媒体</h3><span class="date">2025.09 - 至今</span></div><div class="tl-org">上海学联</div>
+<ul class="tl-list"><li>完成市级学生活动现场跟拍与人物采访录制，支持 5 场大型活动影像采集</li><li>参与短视频剪辑与宣传海报设计，产出宣传内容 20+ 条</li><li>为学联官方公众号、视频号供给素材 150+ 条，保障内容更新节奏</li></ul></div>
+<div class="tl-item reveal"><div class="tl-head"><h3>实习摄影</h3><span class="date">2025.06 - 2025.09</span></div><div class="tl-org">崇明融媒体中心</div>
+<ul class="tl-list"><li>独立承担 3 场区级重大活动跟拍，多机位多角度构图，素材可用率达 95%</li><li>负责图片后期精修与调色，严格遵循融媒体视觉规范</li><li>优化素材分类标签体系，支撑内容生产高效流转</li></ul></div>
+<div class="tl-item reveal"><div class="tl-head"><h3>办公室助理</h3><span class="date">2024.03 - 至今</span></div><div class="tl-org">上海立达学院艺术设计学院</div>
+<ul class="tl-list"><li>支持会议活动 50+ 场，负责会务筹备、接待与纪要整理</li><li>运用设计专业能力优化办公文档与活动物料视觉排版</li><li>跨部门协作提升内部沟通效率 20%</li></ul></div>
+<div class="tl-item reveal"><div class="tl-head"><h3>项目负责人</h3><span class="date">2024.07 - 2025.10</span></div><div class="tl-org">"三下乡"社会实践 · 崇明乡村振兴</div>
+<ul class="tl-list"><li>统筹 3 个乡镇文化宣传与健康服务项目，带领团队服务群众 1200+ 人次</li><li>负责整体方案策划、团队分工、政府与卫生院资源对接</li><li>项目满意度 95%，获"五四优秀团学项目"，个人获"优秀个人"</li></ul></div>
+</div></div></section>
+
+<section id="reports">
+<div class="section-label reveal">Published Works</div>
+<h2 class="section-title reveal">代表报道</h2>
+<p class="section-sub reveal">以上发布于「上海崇明」官方微信公众号，担任摄影</p>
+<div class="reports-grid" id="reportsGrid"></div>
+</section>
+
+<section id="volunteer" style="background:#f5f5f7;max-width:100%;padding-left:0;padding-right:0">
+<div style="max-width:1024px;margin:0 auto;padding:0 22px">
+<div class="section-label reveal">Volunteer</div>
+<h2 class="section-title reveal">志愿服务与实践</h2>
+<div class="vol-grid">
+<div class="vol-card reveal"><div class="v-org">子鹊应急</div><h3>2025 上海半程马拉松</h3><p>医疗保障志愿者，负责赛道应急救护与秩序维护。</p><span class="vol-badge">优秀志愿者</span></div>
+<div class="vol-card reveal"><div class="v-org">子鹊应急</div><h3>2025 苏州河半程马拉松</h3><p>医疗保障志愿者，全程驻守急救点，快速响应突发情况。</p><span class="vol-badge">优秀志愿者</span></div>
+<div class="vol-card reveal"><div class="v-org">赛事保障</div><h3>环上海新城自行车赛</h3><p>医疗保障志愿者，负责赛道沿线医疗值守与应急处置。</p><span class="vol-badge">优秀志愿者</span></div>
+<div class="vol-card reveal"><div class="v-org">赛事保障</div><h3>长三角国际铁人三项赛</h3><p>优秀志愿者，参与赛事现场秩序维护与人员引导。</p><span class="vol-badge">优秀志愿者</span></div>
+<div class="vol-card reveal"><div class="v-org">靖节 · 如拉盾</div><h3>多场大型赛事保障</h3><p>参与专业医疗保障组织多场大型赛事及活动保障任务。</p></div>
+<div class="vol-card reveal"><div class="v-org">社区服务</div><h3>崇明绿化镇乡村志愿</h3><p>深入乡村开展志愿服务，获"最美志愿者"称号；无偿献血志愿者。</p><span class="vol-badge">最美志愿者</span></div>
+</div></div></section>
+
+<section id="honors">
+<div class="section-label reveal">Honors & Certificates</div>
+<h2 class="section-title reveal">荣誉与资质</h2>
+<div class="honor-cats">
+<div class="honor-cat reveal"><h3>学业与综合</h3><ul class="honor-list">
+<li>校"三好学生"</li><li>校"公益之星"</li><li>学生素质综合测评三等奖学金</li><li>优秀学生干部</li><li>五四优秀共青团员</li><li>五四优秀团学项目</li><li>"三下乡"优秀个人</li></ul></div>
+<div class="honor-cat reveal"><h3>宣传成果</h3><ul class="honor-list">
+<li>两篇文章以第一作者登载中央重点新闻网站中华网</li><li>上海红十字短视频大赛获奖（《电动车科普小课堂》主创）</li><li>校短视频大赛优秀奖</li></ul></div>
+<div class="honor-cat reveal"><h3>专业资质</h3><ul class="honor-list">
+<li>上海市 AED 急救员课程导师</li><li>上海市 AED 急救员</li><li>美国心脏协会 AHA-HS 证书</li><li>中国红十字会救护员（初级）</li><li>上海社会体育指导员（四方向）</li><li>普通话水平测试二级甲等</li></ul></div>
+<div class="honor-cat reveal"><h3>其他</h3><ul class="honor-list">
+<li>2025 上海市长江半程马拉松完赛</li><li>上海青少年篮球 MAGIC3 V3 优胜</li><li>校应急救援大赛专业组二等奖（骨干队员）</li><li>青马工程青媒班结课学员</li></ul></div>
+</div></section>
+
+<section id="skills" style="background:#f5f5f7;max-width:100%;padding-left:0;padding-right:0">
+<div style="max-width:1024px;margin:0 auto;padding:0 22px">
+<div class="section-label reveal">Skills</div>
+<h2 class="section-title reveal">专业技能</h2>
+<div class="skills-grid">
+<div class="skill-card reveal"><div class="skill-icon">🎨</div><h3>视觉设计</h3><div class="skill-tags"><span>平面设计</span><span>品牌视觉</span><span>海报排版</span><span>文档优化</span></div></div>
+<div class="skill-card reveal"><div class="skill-icon">📷</div><h3>摄影摄像</h3><div class="skill-tags"><span>活动纪实</span><span>新闻摄影</span><span>人像采访</span><span>无人机航拍</span><span>后期精修</span></div></div>
+<div class="skill-card reveal"><div class="skill-icon">📱</div><h3>新媒体宣传</h3><div class="skill-tags"><span>内容策划</span><span>图文编辑</span><span>短视频剪辑</span><span>公众号运营</span><span>素材库管理</span></div></div>
+<div class="skill-card reveal"><div class="skill-icon">🤝</div><h3>综合能力</h3><div class="skill-tags"><span>Office 办公</span><span>会务组织</span><span>跨部门协调</span><span>活动策划</span><span>团队管理</span></div></div>
+</div></div></section>
+
+<section id="portfolio">
+<div class="section-label reveal">Photography Portfolio</div>
+<h2 class="section-title reveal">摄影作品集</h2>
+<div class="portfolio-filters reveal" id="portfolioFilters"></div>
+<div class="portfolio-grid" id="portfolioGrid"></div>
+</section>
+
+<section id="contact">
+<div class="section-label reveal">Get In Touch</div>
+<h2 class="section-title reveal">合作与交流</h2>
+<p class="section-sub reveal">有宣传合作、拍摄邀约或任何想法，欢迎随时联系</p>
+<div class="contact-wrap">
+<div class="reveal">
+<div class="contact-info-cards">
+<div class="contact-card"><div class="icon">✉️</div><div><div class="label">邮箱</div><div class="value">643273181@qq.com</div></div></div>
+<div class="contact-card"><div class="icon">📞</div><div><div class="label">电话</div><div class="value">157 2127 9800</div></div></div>
+<div class="contact-card"><div class="icon">📍</div><div><div class="label">所在地</div><div class="value">中国 · 上海</div></div></div>
+</div>
+<div style="margin-top:20px"><div style="font-size:13px;font-weight:600;margin-bottom:10px">其他联系方式</div>
+<div class="contact-social"><span>微信 @QJR</span><span>微博 @家蓉的镜头</span></div></div>
+</div>
+<form class="contact-form reveal" id="contactForm">
+<div class="form-row"><div class="form-group"><label>姓名</label><input type="text" placeholder="你的姓名" required></div>
+<div class="form-group"><label>邮箱</label><input type="email" placeholder="your@email.com" required></div></div>
+<div class="form-group"><label>主题</label><input type="text" placeholder="合作类型 / 项目介绍"></div>
+<div class="form-group"><label>留言内容</label><textarea placeholder="简单介绍一下你的需求或想法..." required></textarea></div>
+<button type="submit" class="btn-submit">发送消息 ➤</button>
+</form></div>
+</section>
+
+<footer><p>© 2026 邱家蓉 · 视觉设计 / 纪实摄影 / 新媒体宣传</p><p style="margin-top:6px">Designed & Built with ❤️</p></footer>
+
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" id="lbClose">&times;</button>
+<button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
+<img id="lbImg" src="" alt="">
+<button class="lightbox-nav lightbox-next" id="lbNext">›</button>
+<div class="lightbox-caption"><h4 id="lbTitle"></h4><p id="lbDesc"></p></div>
+</div>
+<div class="toast" id="toast">消息已发送，感谢你的联系！</div>
+
+<script>
+const reports=[
+{t:"竖新镇"百果园"瓜果飘香，试种板栗陆续挂果",u:"https://mp.weixin.qq.com/s/egH837cmnbtFt9_ApSFACg"},
+{t:"崇明老供销社"重生记"",u:"https://mp.weixin.qq.com/s/fsgZhatcDd482Bm3V3IJ7Q"},
+{t:"崇明区家庭家教家风故事大赛开赛！",u:"https://mp.weixin.qq.com/s/Z1W5-HN-YK-Ss2WnGVNCyw"},
+{t:"跟蚊子说再见！崇明全面推进夏季灭蚊专项行动",u:"https://mp.weixin.qq.com/s/CAY9xiFMAWwaJpsbKnxYjw"},
+{t:""家门口"林地生金！竖河村林下轮种黑木耳丰收",u:"https://mp.weixin.qq.com/s/9g7boNT0_EtPKXuSZPFVvQ"},
+{t:"知名军旅金石书画家在崇办展",u:"https://mp.weixin.qq.com/s/irrZ1w_mtFp_MBGHlsLUrw"},
+{t:"崇明夏夜激情点燃！持续到8月18日",u:"https://mp.weixin.qq.com/s/Y_wqShj22XPDstKwIg1Fcg"},
+{t:"崇明这家医院迎来一批"小中医"",u:"https://mp.weixin.qq.com/s/tPmtPZzJZAu37LPI6cywnA"},
+{t:"炎炎夏日，爱心送餐不断档",u:"https://mp.weixin.qq.com/s/WT6bry5dzCIUO_Ek7FRW9A"}];
+const photos=[
+{cat:"风光",title:"雪窦圣境",desc:"宁波雪窦山寺庙群全景俯瞰",src:"https://aka.doubaocdn.com/s/Q2kCt0t5jb"},
+{cat:"建筑",title:"钢铁长虹",desc:"蓝色钢结构大桥，蓝红配色与透视纵深",src:"https://aka.doubaocdn.com/s/lwtXvVudcb"},
+{cat:"生态",title:"犀鸟肖像",desc:"花冠皱盔犀鸟侧面特写",src:"https://aka.doubaocdn.com/s/Aagj2T7Sqt"},
+{cat:"微距",title:"夏蝉",desc:"选择性去色微距特写",src:"https://aka.doubaocdn.com/s/x1kv2V1NH7"},
+{cat:"建筑",title:"古刹春晖",desc:"南通天宁寺古建筑与园林水景",src:"https://aka.doubaocdn.com/s/uW7CJ70A5n"},
+{cat:"城市",title:"古今对话",desc:"嘉兴天主堂与现代城市天际线",src:"https://aka.doubaocdn.com/s/e3Muyd4Unl"},
+{cat:"自然",title:"翠幕",desc:"西湖边青苔古木仰拍",src:"https://aka.doubaocdn.com/s/V9P6NUVzoa"},
+{cat:"人文",title:"陈家铺村",desc:"松阳陈家铺古村落",src:"https://aka.doubaocdn.com/s/dWELp7uLky"},
+{cat:"艺术",title:"金龙",desc:"竹编金龙装置艺术",src:"https://aka.doubaocdn.com/s/qewnnNCLJT"},
+{cat:"人文",title:"巷·午",desc:"松阳古村小巷暖阳",src:"https://aka.doubaocdn.com/s/fsr3mV58e9"},
+{cat:"建筑",title:"园林春昼",desc:"江南园林石桥倒影",src:"https://aka.doubaocdn.com/s/c3FN4hE2NV"},
+{cat:"人文",title:"晒秋",desc:"松阳陈家铺晒秋场景",src:"https://aka.doubaocdn.com/s/sgaBUwZ1NV"},
+{cat:"城市",title:"江畔",desc:"水文站小屋与蓝色大桥",src:"https://aka.doubaocdn.com/s/BIcn8PQDNl"}];
+
+const rg=document.getElementById('reportsGrid');
+reports.forEach(r=>{const a=document.createElement('a');a.className='report-card reveal';a.href=r.u;a.target='_blank';a.rel='noopener';a.innerHTML='<div class="tag">摄影报道</div><h3>'+r.t+'</h3>';rg.appendChild(a);});
+
+const cats=['全部',...new Set(photos.map(p=>p.cat))];
+const pf=document.getElementById('portfolioFilters'),pg=document.getElementById('portfolioGrid');
+cats.forEach((c,i)=>{const b=document.createElement('button');b.className='filter-btn'+(i===0?' active':'');b.textContent=c;b.onclick=()=>{document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');filterPhotos(c);};pf.appendChild(b);});
+function renderPhotos(list){pg.innerHTML='';list.forEach((p,i)=>{const d=document.createElement('div');d.className='portfolio-item reveal';d.innerHTML='<img src="'+p.src+'" alt="'+p.title+'" loading="lazy"><div class="portfolio-overlay"><span class="cat">'+p.cat+'</span><h4>'+p.title+'</h4><p>'+p.desc+'</p></div>';d.onclick=()=>openLightbox(list,i);pg.appendChild(d);setTimeout(()=>d.classList.add('visible'),50+i*60);});}
+function filterPhotos(cat){renderPhotos(cat==='全部'?photos:photos.filter(p=>p.cat===cat));}
+renderPhotos(photos);
+
+let lbList=[],lbIdx=0;
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbTitle=document.getElementById('lbTitle'),lbDesc=document.getElementById('lbDesc');
+function openLightbox(list,i){lbList=list;lbIdx=i;updateLb();lb.classList.add('open');document.body.style.overflow='hidden';}
+function updateLb(){const p=lbList[lbIdx];lbImg.src=p.src;lbTitle.textContent=p.title;lbDesc.textContent=p.desc;}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
+document.getElementById('lbClose').onclick=closeLb;
+document.getElementById('lbPrev').onclick=e=>{e.stopPropagation();lbIdx=(lbIdx-1+lbList.length)%lbList.length;updateLb();};
+document.getElementById('lbNext').onclick=e=>{e.stopPropagation();lbIdx=(lbIdx+1)%lbList.length;updateLb();};
+lb.onclick=e=>{if(e.target===lb)closeLb();};
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft'){lbIdx=(lbIdx-1+lbList.length)%lbList.length;updateLb();}if(e.key==='ArrowRight'){lbIdx=(lbIdx+1)%lbList.length;updateLb();}});
+
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>10);},{passive:true});
+document.getElementById('navToggle').onclick=()=>document.getElementById('navLinks').classList.toggle('open');
+document.querySelectorAll('.nav-links a').forEach(a=>a.onclick=()=>document.getElementById('navLinks').classList.remove('open'));
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{let cur='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});document.querySelectorAll('.nav-links a').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});},{passive:true});
+
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+document.getElementById('contactForm').onsubmit=function(e){e.preventDefault();const toast=document.getElementById('toast');toast.classList.add('show');this.reset();setTimeout(()=>toast.classList.remove('show'),3000);};
+</script>
+</body>
+</html>
